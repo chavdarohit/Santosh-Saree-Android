@@ -91,7 +91,7 @@ public class regiform extends AppCompatActivity {
                         task.put("name",name);
                         task.put("desc",desc);
                         task.put("phone",phone);
-                        task.put("items",items);
+                        task.put("item",items);
                         task.put("date",date);
                         progressbar.setVisibility(View.VISIBLE);
 
