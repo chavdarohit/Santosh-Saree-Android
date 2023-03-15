@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/items"
         tools:ignore="MissingConstraints" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnregs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -50,7 +50,7 @@ public class regiform extends AppCompatActivity {
         itemsedittext=findViewById(R.id.items);
         progressbar=findViewById(R.id.progress);
         progressbar.setVisibility(View.GONE);
-        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        String date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault()).format(new Date());
 
 
 
@@ -93,15 +93,22 @@ public class regiform extends AppCompatActivity {
                         task.put("phone",phone);
                         task.put("item",items);
                         task.put("date",date);
+                        String ukey = mdatabase.child("entries").push().getKey();
+                        task.put("id",ukey);
                         progressbar.setVisibility(View.VISIBLE);
 
-                        mdatabase.child("entries").push().setValue(task).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        mdatabase.child("entries").child(ukey).setValue(task).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
                                 if (task.isSuccessful()) {
                                     // Data upload successful
                                     progressbar.setVisibility(View.GONE);
+                                    nameedittext.getText().clear();
+                                    itemsedittext.getText().clear();
+                                    phoneedittext.getText().clear();
+                                    descedittext.getText().clear();
+
                                     Toast.makeText(regiform.this, "Registered Succesfully", Toast.LENGTH_SHORT).show();
                                 } else {
                                     // Data upload failed
