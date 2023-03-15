@@ -1,9 +1,11 @@
 package com.example.saree;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,17 +67,26 @@ public class myadapter extends RecyclerView.Adapter<myadapter.MyViewHolder> {
                 builder.setTitle("Alert");
                 builder.setMessage("Are you sure you want to delete ?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // do something when OK button is clicked
+
+                       //-------------------------------------------Main code for deleteing the specific entry---------------------------
+
                         String ukey = list.get(position).getId();
-                        databaseReference.child(ukey).removeValue();
                         list.remove(position);
+                        databaseReference.child(ukey).removeValue();
                         notifyItemRemoved(position);
+                        notifyDataSetChanged();
 
-
+                        //------------Refreshing the activity from the adapter----------------
+                        if (context instanceof Activity) {
+                            ((Activity) context).recreate();
+                        }
 
                         Toast.makeText(context, "Entry Deleted", Toast.LENGTH_SHORT).show();
+
 
                     }
                 });
@@ -88,10 +99,6 @@ public class myadapter extends RecyclerView.Adapter<myadapter.MyViewHolder> {
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-
-
-
-
 
             }
         });
