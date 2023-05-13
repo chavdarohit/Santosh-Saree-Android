@@ -3,6 +3,7 @@ package com.example.saree;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class regiform extends AppCompatActivity {
 
     DatabaseReference mdatabase= FirebaseDatabase.getInstance().getReference();
 
-    EditText nameedittext,phoneedittext,descedittext,itemsedittext;
+    EditText billnoedittext,phoneedittext,descedittext,itemsedittext;
     ProgressBar progressbar;
 
     // One Button
@@ -39,12 +40,13 @@ public class regiform extends AppCompatActivity {
 
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regiform);
 
-        nameedittext=findViewById(R.id.name);
+        billnoedittext=findViewById(R.id.billno);
         phoneedittext=findViewById(R.id.phone);
         descedittext=findViewById(R.id.desc);
         itemsedittext=findViewById(R.id.items);
@@ -60,15 +62,15 @@ public class regiform extends AppCompatActivity {
         regis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = nameedittext.getText().toString().trim();
+                String billno = billnoedittext.getText().toString().trim();
                 String phone = phoneedittext.getText().toString().trim();
                 String desc = descedittext.getText().toString().trim();
                 String items = itemsedittext.getText().toString().trim();
 
                     // Validate input values
-                    if (name.isEmpty()) {
-                        nameedittext.setError("Please enter your name");
-                        nameedittext.requestFocus();
+                    if (billno.isEmpty()) {
+                        billnoedittext.setError("Please enter your name");
+                        billnoedittext.requestFocus();
                     } else if (phone.isEmpty()) {
                         phoneedittext.setError("Please enter your phone number");
                         phoneedittext.requestFocus();
@@ -88,7 +90,7 @@ public class regiform extends AppCompatActivity {
                         // Inputs are valid, proceed with your logic
 
                         Map<String,Object> task =new HashMap<>();
-                        task.put("name",name);
+                        task.put("billno",billno);
                         task.put("desc",desc);
                         task.put("phone",phone);
                         task.put("item",items);
@@ -104,7 +106,7 @@ public class regiform extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // Data upload successful
                                     progressbar.setVisibility(View.GONE);
-                                    nameedittext.getText().clear();
+                                    billnoedittext.getText().clear();
                                     itemsedittext.getText().clear();
                                     phoneedittext.getText().clear();
                                     descedittext.getText().clear();

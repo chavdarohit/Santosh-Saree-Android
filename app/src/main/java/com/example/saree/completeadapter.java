@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,53 +15,41 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class myadapter extends RecyclerView.Adapter<myadapter.MyViewHolder> {
-
+public class completeadapter extends RecyclerView.Adapter<completeadapter.MyViewHolder> {
+    ArrayList<entriesclass> list;
     Context context;
 
-    ArrayList<entriesclass> list;
-    public myadapter(Context context, ArrayList<entriesclass> list) {
+
+    public completeadapter(Context context, ArrayList<entriesclass> list)
+    {
         this.context = context;
         this.list = list;
     }
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(context).inflate(R.layout.item,parent,false);
-        return new MyViewHolder(v);
+        View v= LayoutInflater.from(context).inflate(R.layout.completed,parent,false);
+        return new completeadapter.MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         entriesclass ent= list.get(position);
         holder.phone.setText(ent.getPhone());
-        holder.name.setText(ent.getName());
+        holder.billno.setText(ent.getBillno());
         holder.item.setText(ent.getItem());
         holder.date.setText(ent.getDate());
+        holder.desc.setText(ent.getDesc());
 
-
-        holder.done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "Task Completed SMS sended", Toast.LENGTH_SHORT).show();
-                holder.done.setVisibility(View.GONE);
-                holder.delete.setVisibility(View.GONE);
-
-            }
-        });
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("entries");
+                DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("completed");
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Alert");
                 builder.setMessage("Are you sure you want to delete ?");
@@ -72,7 +59,7 @@ public class myadapter extends RecyclerView.Adapter<myadapter.MyViewHolder> {
                     public void onClick(DialogInterface dialog, int which) {
                         // do something when OK button is clicked
 
-                       //-------------------------------------------Main code for deleteing the specific entry---------------------------
+                        //-------------------------------------------Main code for deleteing the specific entry---------------------------
 
                         String ukey = list.get(position).getId();
                         list.remove(position);
@@ -86,11 +73,8 @@ public class myadapter extends RecyclerView.Adapter<myadapter.MyViewHolder> {
                         }
 
                         Toast.makeText(context, "Entry Deleted", Toast.LENGTH_SHORT).show();
-
-
                     }
                 });
-
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -104,25 +88,29 @@ public class myadapter extends RecyclerView.Adapter<myadapter.MyViewHolder> {
         });
     }
 
+
+
     @Override
     public int getItemCount() {
         return list.size();
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView name,item,date,phone;
-        AppCompatButton delete,done;
+        TextView billno,item,date,phone,desc;
+        AppCompatButton delete;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            desc=itemView.findViewById(R.id.carddesc);
             phone=itemView.findViewById(R.id.cardphone);
-            name=itemView.findViewById(R.id.cardname);
+            billno =itemView.findViewById(R.id.cardbillno);
             item=itemView.findViewById(R.id.carditemno);
             date=itemView.findViewById(R.id.carddate);
-            this.delete= itemView.findViewById(R.id.deleteButton);
-            this.done=itemView.findViewById(R.id.doneButton);
+            this.delete = itemView.findViewById(R.id.delcompleted);
+
 
         }
     }
+
 }

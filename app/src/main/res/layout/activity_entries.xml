@@ -4,16 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/saree"
     tools:context=".entries">
 
-  >
+  <androidx.appcompat.widget.SearchView
+      android:id="@+id/searchview"
+      android:layout_width="0dp"
+      app:iconifiedByDefault="false"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+android:background="@drawable/search_view_bg"
+      app:layout_constraintTop_toTopOf="parent"
+      app:queryHint="Search Here..."
+      tools:ignore="MissingConstraints" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/entrylist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="155dp"
-        tools:ignore="MissingConstraints" />
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/entrylist"
+      android:layout_width="394dp"
+      android:layout_height="736dp"
+
+      android:layout_marginTop="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.4"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/searchview"
+      app:layout_constraintVertical_bias="0.07"
+      tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,16 @@
 package com.example.saree;
 
 public class entriesclass {
-String name;
+
+
+
+    String billno;
     String item;
-    String date,id;
+    String date,id,desc;
+
+    public String getDesc() {
+        return desc;
+    }
 
     public String getId() {
         return id;
@@ -13,11 +20,11 @@ String name;
         return phone;
     }
 
-    String phone;
-
-    public String getName() {
-        return name;
+    public String getBillno() {
+        return billno;
     }
+
+    String phone;
 
     public String getItem() {
         return item;

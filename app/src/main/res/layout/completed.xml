@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="220dp"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -129,30 +129,30 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="133dp"
-            android:layout_height="74dp"
-            android:layout_marginLeft="110dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginRight="100dp"
             android:orientation="horizontal">
 
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/doneButton"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/green_rounded_rectange"
-                android:foreground="@drawable/right"
-                android:textColor="@color/green" />
+            <TextView
+              android:layout_width="500px"
+              android:layout_height="wrap_content"
+              android:text="TASK COMPLETED "
+              android:textColor="@color/green"
+              android:textSize="20sp"
+              android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/deleteButton"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:id="@+id/delcompleted"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="100dp"
                 android:background="@drawable/rounded_rectangle"
                 android:foreground="@drawable/wrong"
                 android:textColor="@color/Accent" />
+
+
         </LinearLayout>
 
     </LinearLayout>

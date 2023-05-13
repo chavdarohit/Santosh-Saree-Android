@@ -1,15 +1,14 @@
 package com.example.saree;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         nointernet = findViewById(R.id.nointernet);
+
 
 
         Button entry = findViewById(R.id.entries);
@@ -42,24 +42,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-      /*
-        if(!isconnected()){
-            Toast.makeText(context, "No Internet Access", Toast.LENGTH_SHORT).show();
-            nointernet.setVisibility(View.VISIBLE);
-        }
-        else {
-            Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show();
-        }
-
-
-    }
-
-    private boolean isconnected(){
-        ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(context.CONNECTIVITY_SERVICE);
-
-        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
-    }
-    */
+        Button completedbutton = findViewById(R.id.completed);
+        completedbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,completed.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

@@ -4,91 +4,125 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".regiform">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fill the Correct Information Here"
-        app:layout_constraintBottom_toTopOf="@+id/name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/TextAppearance.Material3.BodyLarge"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"></TextView>
 
-    <EditText
-        android:id="@+id/name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:hint="Name"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            style="@style/TextAppearance.Material3.BodyLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40px"
+
+            android:text="@string/fill_the_correct_information_here"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <AutoCompleteTextView
+        android:id="@+id/billno"
         android:inputType="textCapWords"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <EditText
-        android:id="@+id/items"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:hint="Number of Items"
-        android:inputType="number"
-        android:maxLength="2"
-        app:layout_constraintTop_toBottomOf="@+id/desc"
+        android:layout_marginTop="76dp"
+        android:layout_height="48dp" android:drawableStart="@drawable/icon_person"
+        android:background="@drawable/rounded_rect"
+        android:drawablePadding="10dp"
+        android:hint="Bill No"
+        android:paddingStart="10dp"
+            android:layout_marginBottom="50dp"
+            android:paddingEnd="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="15sp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="-84dp"
+        tools:layout_editor_absoluteY="85dp" />
 
-    <EditText
-        android:id="@+id/phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:hint="Phone Number"
-        android:inputType="number"
-        android:maxLength="10"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <EditText
-        android:id="@+id/desc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:hint="Description"
-        android:maxLength="50"
-        app:layout_constraintTop_toBottomOf="@+id/phone"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" />
+        <AutoCompleteTextView
+            android:id="@+id/items"
+            android:maxLength="2"
+            app:layout_constraintTop_toBottomOf="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/rounded_rect"
+            android:drawableStart="@drawable/list"
+            android:drawablePadding="10dp"
+            android:hint="Number of Items"
+            android:inputType="number"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="15sp" />
 
 
-    <ProgressBar
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:id="@+id/progress"
-        android:layout_marginStart="186dp"
-        android:layout_marginLeft="186dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="187dp"
-        android:layout_marginRight="187dp"
-        android:layout_marginBottom="19dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnregs"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/items"
-        tools:ignore="MissingConstraints" />
 
-    <androidx.appcompat.widget.AppCompatButton
+
+        <AutoCompleteTextView
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:maxLength="10"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/rounded_rect"
+            android:drawableStart="@drawable/icon_phone"
+            android:drawablePadding="10dp"
+            android:hint="Phone Number"
+            android:inputType="number"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="15sp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/rounded_rect"
+            android:maxLength="50"
+            android:drawableStart="@drawable/description"
+            android:drawableLeft="@drawable/description"
+            app:layout_constraintTop_toBottomOf="@+id/phone"
+            android:drawablePadding="10dp"
+            android:hint="Description"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="15sp" />
+
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginBottom="19dp"
+            android:layout_marginLeft="130dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnregs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/items"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnregs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="60dp"
+        android:background="@drawable/btnsignin_gradient"
+        android:layout_marginTop="30dp"
         android:text="Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -96,6 +130,5 @@
         app:layout_constraintTop_toBottomOf="@+id/items"
         tools:ignore="MissingConstraints" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>
