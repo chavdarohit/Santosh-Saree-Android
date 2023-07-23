@@ -4,7 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+
 
     <application
         android:allowBackup="true"
@@ -12,9 +13,11 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="Santosh Sarees"
+        android:enableOnBackInvokedCallback="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.Saree"
-        tools:targetApi="31">
+        tools:targetApi="tiramisu">
+
         <activity
             android:name=".splashscreen"
             android:exported="true" android:theme="@style/splashscreentheme" >
@@ -40,7 +43,10 @@
             android:exported="true">
 
         </activity>
-
+        <!-- Sample Ad Manager app ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9790118614804960~7588263015"/>
     </application>
 
 </manifest>

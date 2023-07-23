@@ -1,37 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/saree"
+    android:orientation="vertical"
     tools:context=".entries">
 
   <androidx.appcompat.widget.SearchView
       android:id="@+id/searchview"
-      android:layout_width="0dp"
-      app:iconifiedByDefault="false"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="0dp"
+      android:background="@drawable/search_view_bg"
+      app:iconifiedByDefault="false"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toStartOf="parent"
-android:background="@drawable/search_view_bg"
       app:layout_constraintTop_toTopOf="parent"
       app:queryHint="Search Here..."
       tools:ignore="MissingConstraints" />
 
+  <com.google.android.gms.ads.admanager.AdManagerAdView
+      android:id="@+id/entryadManagerAdView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:adSize="BANNER"
+      app:adUnitId="ca-app-pub-9790118614804960/6368171370"
+      tools:ignore="MissingConstraints">
+
+  </com.google.android.gms.ads.admanager.AdManagerAdView>
+
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/entrylist"
       android:layout_width="394dp"
-      android:layout_height="736dp"
-
+      android:layout_height="661dp"
       android:layout_marginTop="8dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.4"
+      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/searchview"
-      app:layout_constraintVertical_bias="0.07"
       tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

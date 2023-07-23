@@ -76,7 +76,11 @@ public class entriesadapter extends RecyclerView.Adapter<entriesadapter.MyViewHo
 
                 //---------------------Sending SMS to the Client------------------------------------------
 
-                String wurl = "https://wa.me/+91"+phone+"?text=hello "+ billno +" we are happy to inform you that your order is ready you can collect it from store.";
+                String wurl = "https://wa.me/+91"+phone+"?text=પ્રિય ગ્રાહક ,\n" +
+                        "તમારા Bill No "+billno+" ની તમામ વસ્તુઓ તૈયાર છે.\n" +
+                        "કૃપા કરીને bill સાથે લાવવા વિનંતી.\n" +
+                        "આભાર,\n" +
+                        "સંતોષ રાજકોટ";
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(wurl));
                 context.startActivity(intent);

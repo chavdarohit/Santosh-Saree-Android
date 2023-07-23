@@ -14,6 +14,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.admanager.AdManagerAdRequest;
+import com.google.android.gms.ads.admanager.AdManagerAdView;
+import com.google.android.gms.ads.admanager.AdManagerInterstitialAd;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +35,7 @@ import java.util.Map;
 public class regiform extends AppCompatActivity {
 
     private Button regis;
-
+    private AdManagerAdView mAdManagerAdView;
     DatabaseReference mdatabase= FirebaseDatabase.getInstance().getReference();
 
     EditText billnoedittext,phoneedittext,descedittext,itemsedittext;
@@ -55,7 +61,14 @@ public class regiform extends AppCompatActivity {
         String date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault()).format(new Date());
 
 
-
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdManagerAdView = findViewById(R.id.regiadManagerAdView);
+        AdManagerAdRequest adRequest = new AdManagerAdRequest.Builder().build();
+        mAdManagerAdView.loadAd(adRequest);
 
 
         regis=findViewById(R.id.btnregs);

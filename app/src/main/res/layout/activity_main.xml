@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -18,6 +19,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/register"
@@ -81,10 +84,19 @@
         app:layout_constraintVertical_bias="0.371"
         tools:ignore="MissingConstraints" />
 
-
-
-
-
+    <com.google.android.gms.ads.admanager.AdManagerAdView
+        android:id="@+id/mainadManagerAdView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-9790118614804960/2575609489"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/completed"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

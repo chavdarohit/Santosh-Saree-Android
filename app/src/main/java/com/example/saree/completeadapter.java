@@ -24,6 +24,11 @@ public class completeadapter extends RecyclerView.Adapter<completeadapter.MyView
     ArrayList<entriesclass> list;
     Context context;
 
+    public void setFilteredList(ArrayList<entriesclass> filteredList)
+    {
+        this.list = filteredList;
+        notifyDataSetChanged();
+    }
 
     public completeadapter(Context context, ArrayList<entriesclass> list)
     {

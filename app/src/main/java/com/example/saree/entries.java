@@ -13,6 +13,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.admanager.AdManagerAdRequest;
+import com.google.android.gms.ads.admanager.AdManagerAdView;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +32,7 @@ public class entries extends AppCompatActivity {
     DatabaseReference database;
     entriesadapter entriesadapter;
     ArrayList<entriesclass> list;
+    private AdManagerAdView mAdManagerAdView;
     private SearchView searchView;
 
 
@@ -35,6 +41,16 @@ public class entries extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entries);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdManagerAdView = findViewById(R.id.entryadManagerAdView);
+        AdManagerAdRequest adRequest = new AdManagerAdRequest.Builder().build();
+        mAdManagerAdView.loadAd(adRequest);
+
         searchView= findViewById(R.id.searchview);
         searchView.clearFocus();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
